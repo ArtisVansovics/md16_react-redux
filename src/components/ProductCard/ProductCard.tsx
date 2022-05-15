@@ -1,18 +1,26 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
+import { add } from '../../store/reducers/cartReducer';
 import styles from './ProductCard.module.scss';
+import { getProductById } from '../../data/ProductsData';
 
 type ProductCardProps = {
   id: number;
   title: string;
   price: number;
   imgSrc: string;
-  count: 0;
+  count: number;
 }
 
 const ProductCard:FC<ProductCardProps> = ({
-  id, count, imgSrc, price, title,
+  id, imgSrc, price, title, count,
 }) => {
-  const a = 0;
+  const [productCount, setProductCount] = useState(count);
+  const cart = useSelector((state: RootState) => state.cart.value);
+  const dispatch = useDispatch<AppDispatch>();
+
+  console.log(cart);
 
   return (
     <div
@@ -42,22 +50,30 @@ const ProductCard:FC<ProductCardProps> = ({
         >
           <button
             className={`${styles.btn} ${styles.btnCount}`}
+            onClick={() => setProductCount(productCount - 1)}
+            disabled={productCount === 0}
           >
             -
           </button>
           <div
             className={styles.count}
           >
-            {count}
+            {productCount}
           </div>
           <button
             className={`${styles.btn} ${styles.btnCount}`}
+            onClick={() => setProductCount(productCount + 1)}
           >
             +
           </button>
         </div>
         <button
           className={styles.btn}
+          onClick={() => {
+            // @ts-ignore
+            dispatch(add({ ...getProductById(id), count: productCount }));
+            setProductCount(0);
+          }}
         >
           Add to cart
         </button>

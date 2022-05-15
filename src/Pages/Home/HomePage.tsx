@@ -10,6 +10,8 @@ const HomePage = () => {
     setProducts(getProducts());
   }, []);
 
+  console.log(products);
+
   return (
     <div className="page">
       <div className="container">
