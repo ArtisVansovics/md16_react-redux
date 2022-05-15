@@ -66,4 +66,11 @@ const shopProducts: Product[] = [
   },
 ];
 
+export const getProducts = () => [...shopProducts];
+export const getProductById = (id: number) => (
+  shopProducts.find((product) => (
+    product.id === id
+  ))
+);
+
 export default shopProducts;
