@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { add } from '../../store/reducers/cartReducer';
-import styles from './ProductCard.module.scss';
 import { getProductById } from '../../data/ProductsData';
+import styles from './ProductCard.module.scss';
 
 type ProductCardProps = {
   id: number;

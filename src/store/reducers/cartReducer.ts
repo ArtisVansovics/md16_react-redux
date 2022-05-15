@@ -11,11 +11,19 @@ export const cartSlice = createSlice({
       // @ts-ignore
       state.value = [...state.value, action.payload];
     },
+    plusOne: (state: {value: Product[]}, action: {payload: number}) => {
+      // @ts-ignore
+      state.value.find((n) => n.id === action.payload).count += 1;
+    },
+    minusOne: (state: {value: Product[]}, action: {payload: number}) => {
+      // @ts-ignore
+      state.value.find((n) => n.id === action.payload).count -= 1;
+    },
   },
 });
 
 export const {
-  add,
+  add, plusOne, minusOne,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
