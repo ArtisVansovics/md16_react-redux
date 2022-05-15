@@ -6,6 +6,7 @@ import {
 import Header from './components/Header/Header';
 import Page404 from './Pages/404/Page404';
 import HomePage from './Pages/Home/HomePage';
+import CartPage from './Pages/Cart/CartPage';
 
 const App = () => (
   <Router>
@@ -18,6 +19,10 @@ const App = () => (
       <Route
         path="/home"
         element={<HomePage />}
+      />
+      <Route
+        path="/cart"
+        element={<CartPage />}
       />
       <Route
         path="404"

@@ -8,7 +8,7 @@ const HomePage = () => {
 
   useEffect(() => {
     setProducts(getProducts());
-  });
+  }, []);
 
   return (
     <div className="page">
