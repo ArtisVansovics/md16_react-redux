@@ -68,9 +68,11 @@ const ProductCard:FC<ProductCardProps> = ({
         <button
           className={styles.btn}
           onClick={() => {
-            // @ts-ignore
-            dispatch(add({ ...getProductById(id), count: productCount }));
-            setProductCount(0);
+            const thisProduct = getProductById(id);
+            if (thisProduct) {
+              dispatch(add({ ...thisProduct, count: productCount }));
+              setProductCount(0);
+            }
           }}
           disabled={productCount === 0}
         >
