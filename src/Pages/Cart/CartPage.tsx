@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 import CartCard from '../../components/CartCard/CartCard';
 import Button from '../../components/Button/Button';
@@ -7,6 +8,7 @@ import Button from '../../components/Button/Button';
 const CartPage = () => {
   const cart = useSelector((state: RootState) => state.cart.value);
   const language = useSelector((state: RootState) => state.language.language);
+  const navigate = useNavigate();
 
   const total = cart
     .map(({ price, count }) => price * count)
@@ -52,8 +54,14 @@ const CartPage = () => {
             </div>
           </div>
           <div className="col-xs-12">
-            <div className="box">
-              <Button title={language === 'LV' ? 'Iegādāties' : 'Purchase'} />
+            <div className="box box--row">
+              <Button
+                title={language === 'LV' ? '< Atpakaļ uz produktiem' : '< Return to products'}
+                onClick={() => navigate('/')}
+              />
+              <Button
+                title={language === 'LV' ? 'Iegādāties' : 'Purchase'}
+              />
             </div>
           </div>
         </div>

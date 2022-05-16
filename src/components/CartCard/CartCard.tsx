@@ -15,13 +15,10 @@ type CartCardProps = {
 const CartCard:FC<CartCardProps> = ({
   id, imgSrc, price, title, count,
 }) => {
-  const cart = useSelector((state: RootState) => state.cart.value);
   const language = useSelector((state: RootState) => state.language.language);
   const dispatch = useDispatch<AppDispatch>();
 
   const totalPrice = (price * count).toFixed(2);
-
-  console.log(cart);
 
   return (
     <div

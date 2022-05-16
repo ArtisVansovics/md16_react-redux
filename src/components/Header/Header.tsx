@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../store';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store';
 import { toEnglish, toLatvian } from '../../store/reducers/languageReducer';
 import styles from './Header.module.scss';
 import logo from '../../assets/images/logoShop.png';
 
 const Header = () => {
-  const language = useSelector((state: RootState) => state.language.language);
   const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    console.log(language);
-  }, [language]);
 
   return (
     <header className={styles.header}>
