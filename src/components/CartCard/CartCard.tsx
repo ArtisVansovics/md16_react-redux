@@ -16,7 +16,10 @@ const CartCard:FC<CartCardProps> = ({
   id, imgSrc, price, title, count,
 }) => {
   const cart = useSelector((state: RootState) => state.cart.value);
+  const language = useSelector((state: RootState) => state.language.language);
   const dispatch = useDispatch<AppDispatch>();
+
+  const totalPrice = (price * count).toFixed(2);
 
   console.log(cart);
 
@@ -43,7 +46,7 @@ const CartCard:FC<CartCardProps> = ({
         <p
           className={styles.text}
         >
-          {`Price per unit: ${price}`}
+          {language === 'LV' ? `Cena par katru: ${price}` : `Price per unit: ${price}`}
         </p>
         <div
           className={styles.container}
@@ -51,7 +54,7 @@ const CartCard:FC<CartCardProps> = ({
           <p
             className={styles.text}
           >
-            Amount:
+            {language === 'LV' ? 'Daudzums:' : 'Amount:'}
           </p>
           <div
             className={styles.row}
@@ -79,7 +82,7 @@ const CartCard:FC<CartCardProps> = ({
         <p
           className={styles.text}
         >
-          {`Total: ${(price * count).toFixed(2)}`}
+          {language === 'LV' ? `Kopā: ${totalPrice}` : `Total: ${totalPrice}`}
         </p>
       </div>
     </div>

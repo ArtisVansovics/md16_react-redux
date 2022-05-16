@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button';
 
 const CartPage = () => {
   const cart = useSelector((state: RootState) => state.cart.value);
+  const language = useSelector((state: RootState) => state.language.language);
 
   const total = cart
     .map(({ price, count }) => price * count)
@@ -18,7 +19,9 @@ const CartPage = () => {
         <div className="row">
           <div className="col-xs-12">
             <div className="box">
-              <h1>Your Cart</h1>
+              <h1>
+                {language === 'LV' ? 'Jūsu grozs' : 'Your Cart'}
+              </h1>
             </div>
           </div>
         </div>
@@ -44,13 +47,13 @@ const CartPage = () => {
           <div className="col-xs-12">
             <div className="box">
               <h2 className="page__sub-title">
-                {`Total: $${total}`}
+                {language === 'LV' ? `Kopā: $${total}` : `Total: $${total}`}
               </h2>
             </div>
           </div>
           <div className="col-xs-12">
             <div className="box">
-              <Button title="Purchase" />
+              <Button title={language === 'LV' ? 'Iegādāties' : 'Purchase'} />
             </div>
           </div>
         </div>

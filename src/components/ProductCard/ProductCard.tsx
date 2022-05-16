@@ -17,10 +17,8 @@ const ProductCard:FC<ProductCardProps> = ({
   id, imgSrc, price, title, count,
 }) => {
   const [productCount, setProductCount] = useState(count);
-  const cart = useSelector((state: RootState) => state.cart.value);
+  const language = useSelector((state: RootState) => state.language.language);
   const dispatch = useDispatch<AppDispatch>();
-
-  console.log(cart);
 
   return (
     <div
@@ -40,7 +38,7 @@ const ProductCard:FC<ProductCardProps> = ({
       <p
         className={styles.text}
       >
-        {`Price: ${price}`}
+        {language === 'LV' ? `Cena: ${price}` : `Price: ${price}`}
       </p>
       <div
         className={styles.row}
@@ -75,7 +73,7 @@ const ProductCard:FC<ProductCardProps> = ({
             setProductCount(0);
           }}
         >
-          Add to cart
+          {language === 'LV' ? 'Pievienot grozam' : 'Add to cart'}
         </button>
       </div>
     </div>
