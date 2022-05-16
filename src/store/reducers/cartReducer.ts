@@ -10,10 +10,8 @@ export const cartSlice = createSlice({
     add: (state: {value: Product[]}, action: {payload: Product}) => {
       const thisProduct = state.value.find((n) => n.id === action.payload.id);
       if (thisProduct) {
-        if (thisProduct) {
-          thisProduct.count += action.payload.count;
-        } else state.value = [...state.value, action.payload];
-      }
+        thisProduct.count += action.payload.count;
+      } else state.value = [...state.value, action.payload];
     },
     plusOne: (state: {value: Product[]}, action: {payload: number}) => {
       const thisProduct = state.value.find((n) => n.id === action.payload);
