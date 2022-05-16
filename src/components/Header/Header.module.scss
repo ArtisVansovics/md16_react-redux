@@ -20,7 +20,23 @@
   border-radius: 5px;
 }
 
+.link {
+  position: relative;
+  padding: 10px 10px 0;
+}
+
 .cart {
   width: 40px;
   fill: #68B4BD;
+}
+
+.counter {
+  color: #1C2140;
+  background-color: #8FBF60;
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 1;
+  border-radius: 50%;
+  padding: 5px 8px;
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
 import { toEnglish, toLatvian } from '../../store/reducers/languageReducer';
 import styles from './Header.module.scss';
 import logo from '../../assets/images/logoShop.png';
 
 const Header = () => {
+  const cart = useSelector((state: RootState) => state.cart.value);
   const dispatch = useDispatch<AppDispatch>();
 
   return (
@@ -28,8 +29,14 @@ const Header = () => {
           </option>
         </select>
         <NavLink
+          className={styles.link}
           to="/cart"
         >
+          {cart.length !== 0 && (
+            <div className={styles.counter}>
+              {cart.length}
+            </div>
+          )}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`bi bi-cart4 ${styles.cart}`}
