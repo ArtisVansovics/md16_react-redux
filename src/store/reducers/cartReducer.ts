@@ -8,7 +8,10 @@ export const cartSlice = createSlice({
   },
   reducers: {
     add: (state: {value: Product[]}, action: {payload: Product}) => {
-      state.value = [...state.value, action.payload];
+      if (state.value.find((n) => n.id === action.payload.id)) {
+        // @ts-ignore
+        state.value.find((n) => n.id === action.payload.id).count += action.payload.count;
+      } else state.value = [...state.value, action.payload];
     },
     plusOne: (state: {value: Product[]}, action: {payload: number}) => {
       // @ts-ignore
