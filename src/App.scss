@@ -1,15 +1,5 @@
 // #031226, #1F788C, #F2D57E, #F2C185, #F28D8D
 
-.App {
-  display: flex;
-  flex-flow: column;
-  height: 100vh;
-  background-color: #073A59;
-  background-image: linear-gradient(to top, #19687F, #68B4BD,  #175673, #042342);
-  color: #F2C185;
-  padding: 30px 20px;
-}
-
 .page {
   display: flex;
   flex-flow: column;
@@ -19,9 +9,14 @@
   margin-right: auto;
   margin-left: auto;
   align-items: center;
-  background-color: #287499;
-  color: #D99C52;
+  background-color: #073A59;
+  background-image: linear-gradient(to top, #19687F, #68B4BD,  #175673);
+  color: #F2C185;
   padding: 20px;
+}
+
+.page__sub-title {
+  align-self: flex-end;
 }
 
 .page__text {

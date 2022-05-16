@@ -8,7 +8,6 @@ export const cartSlice = createSlice({
   },
   reducers: {
     add: (state: {value: Product[]}, action: {payload: Product}) => {
-      // @ts-ignore
       state.value = [...state.value, action.payload];
     },
     plusOne: (state: {value: Product[]}, action: {payload: number}) => {

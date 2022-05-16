@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import CartCard from '../../components/CartCard/CartCard';
+import Button from '../../components/Button/Button';
 
 const CartPage = () => {
   const cart = useSelector((state: RootState) => state.cart.value);
@@ -42,9 +43,14 @@ const CartPage = () => {
         <div className="row">
           <div className="col-xs-12">
             <div className="box">
-              <h2>
+              <h2 className="page__sub-title">
                 {`Total: $${total}`}
               </h2>
+            </div>
+          </div>
+          <div className="col-xs-12">
+            <div className="box">
+              <Button title="Purchase" />
             </div>
           </div>
         </div>

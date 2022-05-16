@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Product } from '../../models/ProductModel';
 import { getProducts } from '../../data/ProductsData';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import Button from '../../components/Button/Button';
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,6 +31,11 @@ const HomePage = () => {
                   />
                 ))}
               </div>
+            </div>
+          </div>
+          <div className="col-xs-12">
+            <div className="box">
+              <Button title="Load more" />
             </div>
           </div>
         </div>
