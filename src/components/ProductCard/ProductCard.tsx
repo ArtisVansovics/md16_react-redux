@@ -72,6 +72,7 @@ const ProductCard:FC<ProductCardProps> = ({
             dispatch(add({ ...getProductById(id), count: productCount }));
             setProductCount(0);
           }}
+          disabled={productCount === 0}
         >
           {language === 'LV' ? 'Pievienot grozam' : 'Add to cart'}
         </button>
