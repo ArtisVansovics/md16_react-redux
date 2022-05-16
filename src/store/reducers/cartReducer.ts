@@ -26,7 +26,12 @@ export const cartSlice = createSlice({
     },
     minusOne: (state: {value: Product[]}, action: {payload: number}) => {
       // @ts-ignore
-      findByIdNumber(state, action).count -= 1;
+      if (findByIdNumber(state, action).count === 1) {
+        // @ts-ignore
+        state.value.splice(state.value.indexOf(findByIdNumber(state, action)), 1);
+      } else { // @ts-ignore
+        findByIdNumber(state, action).count -= 1;
+      }
     },
   },
 });
